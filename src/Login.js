@@ -32,7 +32,12 @@ class Login extends Component {
                     if (userInfo.users[i].role_no === 1) {
                         this.props.history.push('/admin');
                     } else {
-                        this.props.history.push(`/users/${userInfo.users[i].role_no}`);
+                        //사용자 정보 저장
+                        localStorage.setItem('userData', JSON.stringify(userInfo.users[i]));
+                        //사용자 정보 호출
+                        const data = JSON.parse(window.localStorage.getItem('userData'));
+
+                        this.props.history.push(`/users/${data.role_no}`);
                     }
                 }
             }
