@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './Admin.css';
 import { data } from './dummy';
 
 class Admin extends Component {
     constructor(props) {
-        console.log(props);
+
         super(props)
         this.state = {
             dummyData: data,
@@ -14,47 +13,35 @@ class Admin extends Component {
     }
     //파일 등록
     fileUpload = (index, titleIndex) => event => {
-        event.preventDefault();
         const { dummyData } = this.state;
-        
+
         let files = event.target.files;
-        
+
         let copyData = Object.assign([], dummyData);
         copyData[index].titles[titleIndex].fileName = files[0].name;
-        
+
         this.setState({
             dummyData: copyData
         })
-        
-        /*
-        Reducer 사용 시
-        const { addItems } = this.props;
-
-        let data = {
-            filename: files[0].name,
-            filenameId: key,
-            sidoCode:sidoCode
-        }
-        console.log('ff',data)
-
-        addItems(data);
-        */
     }
 
-    //파일 삭제(구현안됨)
-    fileDelete = (key) => {
-        this.setState({ filename: "" });
-        let data = {
-            deleteId: this.props.match.params['id'],
-            deleteYn: true
-        }
-        this.props.addItem(data);
+    //파일 삭제
+    fileDelete = (index, titleIndex) => event => {
+        event.preventDefault();
+        const { dummyData } = this.state;
+
+        let copyData = Object.assign([], dummyData);
+        copyData[index].titles[titleIndex].fileName = "";
+
+        this.setState({
+            dummyData: copyData
+        })
+
     }
 
     render() {
-        const { items } = this.props;
         const { dummyData } = this.state;
-        //localStorage.setItem('items',JSON.stringify(items));
+        localStorage.setItem('dummyData', JSON.stringify(dummyData));
         return (
             <div className="frame1">
                 <div className="header1" >
@@ -63,7 +50,7 @@ class Admin extends Component {
                 <div className="container">
                     {
                         dummyData.map((item, index) => (
-                            <div className="container2" key={item.key}>
+                            <div className="container2" key={index}>
                                 <div className="content">
                                     <h2>{item.sido}</h2>
                                 </div>
@@ -77,11 +64,12 @@ class Admin extends Component {
                                                 <h3>{title.fileName}</h3>
                                             </div>
                                             <div className="contentRight" >
-                                                <label htmlFor={`title-${index}-${titleIndex}`}>
-                                                    등록<input type="file" id={`title-${index}-${titleIndex}`} name={item.code} onChange={this.fileUpload(index, titleIndex)} />
+                                                <label htmlFor={`title-${index}-${titleIndex}-add`}>
+                                                    등록<input type="file" id={`title-${index}-${titleIndex}-add`} onChange={this.fileUpload(index, titleIndex)} />
                                                 </label>
-                                                <label htmlFor="ex_file_delete">삭제</label>
-                                                {/* <input key={items.key} type="button" id="ex_file_delete" onClick={this.fileDelete(items.key)} /> */}
+                                                <label htmlFor={`title-${index}-${titleIndex}-delete`}>
+                                                    삭제<input type="button" id={`title-${index}-${titleIndex}-delete`} onClick={this.fileDelete(index, titleIndex)} />
+                                                </label>
                                             </div>
                                         </div>
                                     ))
@@ -96,14 +84,4 @@ class Admin extends Component {
     }
 
 }
-const mapStateToProps = (state) => {
-    return {
-        items: state
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addItems: (data) => dispatch({ type: 'ADD_ITEM', data: data })
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Admin);
+export default Admin;
