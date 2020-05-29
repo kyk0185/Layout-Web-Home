@@ -59,112 +59,19 @@ class HtmlLayout extends Component {
                     </div>
                 </div>
                 <div className="container-user">
-                    <div className="content-user">
-                        <div className="card-layout">
-                            <h2 className="card-top">Layout</h2>
-                            <div className="card-bottom">
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-layout">
-                            <h2 className="card-top">Layout</h2>
-                            <div className="card-bottom">
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-layout">
-                            <h2 className="card-top">Layout</h2>
-                            <div className="card-bottom">
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-layout">
-                            <h2 className="card-top">Layout</h2>
-                            <div className="card-bottom">
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-layout">
-                            <h2 className="card-top">Layout</h2>
-                            <div className="card-bottom">
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     {dummyData.filter(item => item.code === this.state.user_code).map((item, index) => (
-                        <div className="content-user" key={index}>
-                            {
-                                item.titles.map((title, titleIndex) => (
-                                    <div className="card-bottom" key={`title-${index}-${titleIndex}`} style={{margin:10}}>
-                                        <h4 className="card-title">{title.fileName}</h4>
-                                        <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                        <div className="button-layout filebox">
-                                            <label htmlFor="ex_file" style={title.fileName ? {} : { display: 'none' }}>조회</label>
-                                            <input type="file" id="ex_file" onChange={e => this.fileUpload(e)} />
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
+                        item.titles.map((title, titleIndex) => (
+                            <div className="card-bottom" key={`title-${index}-${titleIndex}`} style={{margin:10}}>
+                                <h4 className="card-title">{title.name}</h4>
+                                <p className="card-info">{title.fileInfo}</p>
+                                <div className="button-layout filebox">
+                                    <label htmlFor="ex_file" style={title.fileName ? {} : { display: 'none' }}>조회</label>
+                                    <input type="file" id="ex_file" onChange={e => this.fileUpload(e)} />
+                                </div>
+                            </div>
+                        ))
                     ))}
-                    <div className="content-user">
-                            <div className="card-bottom" style={{margin:10}}>
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                            <div className="card-bottom" style={{margin:10}}>
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                            <div className="card-bottom" style={{margin:10}}>
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                            <div className="card-bottom" style={{margin:10}}>
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary" >조회</Button>
-                                </div>
-                            </div>
-                            <div className="card-bottom" style={{margin:10}}>
-                                <h4 className="card-title">Flexbox</h4>
-                                <p className="card-info">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <div className="button-layout">
-                                    <Button variant="outline-secondary">조회</Button>
-                                </div>
-                            
-                            </div>
-                    </div>
+                   
                 </div>
                 <div className="footer-user" />
             </div>

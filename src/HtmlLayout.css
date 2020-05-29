@@ -1,4 +1,4 @@
-h2,h3, h5{
+h2, h3, h5{
     margin: 0;
     padding:0;
 }
@@ -22,20 +22,13 @@ h2,h3, h5{
 }
 .container-user{
     display: flex;
-    flex:5;
-    height: 100%;
-    flex-direction: column;
-    padding:10px;
-}
-.content-user{
-    display: flex;
+    flex-wrap:wrap;
     flex:1;
-    overflow: auto;
+    padding:10px;   
 }
 .card-bottom:hover{
     background-color: #EBF5FF;
     border-color: #EBF5FF;
-    
 }
 .card-bottom
 {
@@ -48,8 +41,9 @@ h2,h3, h5{
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.125);
     padding: 1.25rem;
-    flex-basis:360px;
+    flex-basis: 355px;
     box-shadow:1px 1px 1px 1px #dedede ;
+    height: 258.33px;
 }
 .card-top{
     width: 100%;
@@ -74,9 +68,10 @@ h2,h3, h5{
 }
 .footer-user{
     height: 60px;
-    margin-top: auto;
     border-style: solid;
     border-color: black;
+    flex:none;
+    margin-top: auto;
 }
 .filebox label:hover{
     color: #fff;
@@ -119,6 +114,11 @@ h2,h3, h5{
     text-align: right;
     margin-left: 7.5px;
 }
+/* .content-user{
+    display: flex;
+    flex-wrap:wrap;
+    flex:1;
+} */
  /* .section-top 
 {
     display: inline-flex;
