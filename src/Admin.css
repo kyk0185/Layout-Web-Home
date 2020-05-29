@@ -1,69 +1,80 @@
-.frame1{
+button{
+    display: inline-block;
+    color: #999;
+    line-height: 10px;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #999;
+    border-radius: .25em;
+    position: relative;
+    right: 0;
+    margin-right: 6px;
+    height: 30px;
+    font-size: 15px;
+}
+.frame-admin{
     position: absolute;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
 }
-.header1{
-    flex: 0.5;
+.header-admin{
+    display: flex;
     overflow: auto hidden;
     border-style: solid;
     border-color: black;
-    margin-bottom: 5px;
-    padding-left: 15px;
+    padding-left: 20px;
 }
-.container{
+.header-admin h2 {
+    line-height: 1.5;
+    vertical-align: middle;
+}
+.container-admin{
     display: flex;
     flex: 5;
     overflow: scroll;
-    border-style: solid;
-    border-color: black; 
-    padding: 10px;
+    padding: 9.6px;
     flex-direction: column;
+    height: 100%;
 }
-.container2{
+.container-title-admin{
     display: flex;
     flex:5;
     flex-direction: column;
     padding: 10px;
 }
-.content{
+.content-admin{
     display: flex;
-    flex-grow: 1;
-    /* margin-top: 5px; */
+    margin-bottom: 9.6px;
+    justify-content: center;
 }
-.contentLeft{
-    flex: 1;
+.footer-admin{
+    height: 60px;
+    border-style: solid;
+    border-color: black;
+    margin-top: auto;
 }
-.contentRight{
-    flex: 1;
-    text-align: right;
-   
+.contentRight-admin label:hover{
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
 }
-.contentMiddle{
-    flex: 1;
-    text-align: center;
-}
-h3{
-    margin:0 10px;
-    padding: 0;
-    height: 0;
-    vertical-align: middle;
-    line-height: 50px;
-}
-.contentRight label{
+.contentRight-admin label{
     display: inline-block;
     padding: .2em .30em;
-    color: #999;
+    font-weight: 400;
     line-height: normal;
-    background-color: #fdfdfd;
     cursor: pointer;
-    border: 1px solid #ebebeb;
-    border-bottom-color: #e2e2e2;
-    border-radius: .25em;
+    border-radius: .25rem;
+    margin: 0 9.6px;
+    color: #6c757d;
+    background-color: transparent;
+    font-size: .9rem;
+    border: 1px solid #6E6E6E;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.contentRight input[type="file"] {
+.contentRight-admin input[type="file"] {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -74,23 +85,7 @@ h3{
     border: 0;
     float: left;
 }
-.contentRight input[type="button"] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-    float: left;
-}
-/* .columnAlign{
-    text-align: right;
-    vertical-align: bottom;
-    line-height: 200px;
-    margin-right: 5px;
-}  */
-.loginBody{
-    margin-top: 50px;
+.contentRight-admin input {
+    float: right;
+    margin-top: 8px;
 }

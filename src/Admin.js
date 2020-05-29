@@ -12,7 +12,6 @@ class Admin extends Component {
             dummyData: data,
         }
         this.handleChange = this.fileUpload.bind(this);
-        this.handleInputChange = this.handleCheckedState.bind(this);
     }
     //파일 등록
     fileUpload = (index, titleIndex) => event => {
@@ -26,7 +25,6 @@ class Admin extends Component {
         this.setState({
             dummyData: copyData
         })
-        localStorage.setItem('dummyData', JSON.stringify(dummyData));
     }
 
     //파일 삭제
@@ -34,6 +32,7 @@ class Admin extends Component {
         event.preventDefault();
         const { dummyData } = this.state;
 
+        alert('파일을 삭제하시겠습니까?')
         let copyData = Object.assign([], dummyData);
         copyData[index].titles[titleIndex].fileName = "";
 
@@ -64,27 +63,21 @@ class Admin extends Component {
         let copyData = Object.assign([], dummyData);
         let copyTitles = copyData[index].titles;
 
-        console.log(title.value);
-
         copyTitles.forEach((copyTitle, i) => {
             if (copyTitle.key === Number(title.value)) {
                 copyTitles.splice(i, 1);
             }
         });
-
         this.setState({ dummyData: copyData });
     }
     
     //행 삭제 버튼 클릭 시
     fileColumnDelete = index => event => {
 
-        console.log(event);
-
         //(checkbox)행 전체 개수
         var titleLength = document.getElementsByName(`check-${index}`).length;
-
-        //Title 존재 유무 체크 > 0
         
+        //Title 존재 유무 체크 > 0
         if (titleLength > 0) {
             let removeIndexs = [];
 
@@ -113,80 +106,79 @@ class Admin extends Component {
                     }
                 }
             } else {
-                alert('삭제할 대상을 선택해 주세요.2');
+                alert('삭제할 대상을 선택해 주세요');
             }
         } else {
-            alert('삭제할 대상을 선택해 주세요.1');
+            alert('삭제할 대상을 선택해 주세요');
         }
     }
-
-    //체크 활성화/비활성화 토글(?????)
-    handleCheckedState(event) {
-        const target = event.target;
-        const value = target.name === 'isCheck' ? target.checked : target.value;
-        const name = target.name;
-        
-        this.setState({
-          [name]: value
-        });
+    checkFileAll = index => event=>{
+        event.preventDefault();
+        //(checkbox)행 전체 개수
+        var titleLength = document.getElementsByName(`check-${index}`).length;
+        var test = document.getElementsByName(`checkFileAll-${index}`);
+        console.log(test)
     }
-
     render() {
         const { dummyData } = this.state;
-
+        localStorage.setItem('dummyData', JSON.stringify(dummyData));
         return (
-            <div className="frame1">
-                <div className="header1" >
+            <div className="frame-admin">
+                <div className="header-admin">
                     <h2>관리자 페이지</h2>
                 </div>
-                <div className="container1">
+                <div className="container-admin">
                     {
                         dummyData.map((item, index) => (
-                            <div className="container2" key={index}>
-                                <div className="content">
-                                    <h4>{item.sido}</h4>
-                                        <Button onClick={this.fileColumnAdd(index)}>행 추가</Button>
-                                        <Button onClick={this.fileColumnDelete(index)}>행 삭제</Button>
+                            <div className="container-title-admin" key={index}>
+                                <div className="content-admin">
+                                        <h4>{item.sido}</h4>
+                                        <div style={{marginLeft: 'auto', height:30,lineHeight:1}}>
+                                            <Button variant="outline-secondary" onClick={this.fileColumnAdd(index)} style={{marginRight:9.6,padding:'1px 6px'}}>+</Button>
+                                            <Button variant="outline-secondary" onClick={this.fileColumnDelete(index)} style={{padding:'1px 8px'}}>-</Button>
+                                        </div>
                                 </div>
-                                <Table striped bordered hover style={{textAlign :'center'}} variant="dark">
+                                <Table striped bordered hover style={{textAlign :'center'}}>
                                     <thead>
                                         <tr>
-                                            <th style={{width:'30%'}}>기관별 제목</th>
-                                            <th>파일이름</th>
-                                            <th style={{width:'30%'}}>#</th>
+                                            <th style={{width:'20%'}}>제목</th>
+                                            <th style={{width:'42%'}}>설명</th>
+                                            <th style={{width:'26%'}}>파일명</th>
+                                            <th style={{width:'8%'}}>파일관리</th>
+                                            <th style={{width:'4%'}}><input name={`checkFileAll-${index}`} value={item.key} type="checkbox" onClick={this.checkFileAll(index)} /></th>
                                         </tr>
                                     </thead>
+                                    <tbody>
                                 {
                                     item.titles.map((title, titleIndex) => (
-                                        <tbody key={`title-${index}-${titleIndex}`}>
-                                            <tr>
-                                                <td>{title.name}</td>
-                                                <td>{title.fileName}</td>
-                                                <div className="contentRight">
+                                        <tr key={`title-${index}-${titleIndex}`}>
+                                            <td>{title.name}</td>
+                                            <td>{title.info}</td>
+                                            <td>{title.fileName}</td>
+                                                <td className="contentRight-admin">
                                                     <label htmlFor={`title-${index}-${titleIndex}-add`}>
                                                         등록<input type="file" id={`title-${index}-${titleIndex}-add`} onChange={this.fileUpload(index, titleIndex)} />
                                                     </label>
-                                                    <label htmlFor={`title-${index}-${titleIndex}-delete`}>
-                                                        삭제<input type="button" id={`title-${index}-${titleIndex}-delete`} onClick={this.fileDelete(index, titleIndex)} />
-                                                    </label>
-                                                    <input
+                                                    <Button variant="outline-secondary" id={`title-${index}-${titleIndex}-delete`} onClick={this.fileDelete(index, titleIndex)} style={{verticalAlign:'baseline',lineHeight:1, fontSize:'.9rem',height: 27.75}}>삭제</Button>
+                                                </td>
+                                                <td><input
                                                         name={`check-${index}`}
                                                         value={title.key}
                                                         type="checkbox"
-                                                    />
-                                                </div>
-                                            </tr>
-                                        </tbody>
+                                                    /></td>
+                                        </tr>
                                     ))
                                 }
+                                </tbody>
                                 </Table>
                             </div>
                         ))
                     }
                 </div>
-                <div className="footer" />
+                <div className="footer-admin" />
             </div>
         );
     }
 }
 export default Admin;
+
