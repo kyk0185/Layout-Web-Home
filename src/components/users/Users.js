@@ -1,112 +1,40 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { userInfo, data } from "../../dummy";
-import "./Users.css";
-import { Button } from "react-bootstrap";
+import DataTemplate from "./DataTemplate";
+import DataList from "./DataList";
 
-class Users extends Component {
-  constructor(props) {
-    super(props);
+const Users = ({ match }) => {
+  const params_role_no = match.params["role_no"];
+  const [items, setItems] = useState(data);
+  const [role_name, setRole_name] = useState("");
+  const [user_code, setUser_code] = useState("");
+  const [user_name, setUser_name] = useState("");
+  const [logo, setLogo] = useState("");
 
-    this.state = {
-      dummyData: data,
-      role_name: "",
-      user_code: "",
-      user_name: "",
-      logo: "",
-    };
-  }
-  componentDidMount = (_) => {
-    //기관별 이름, 코드
+  useEffect(() => {
     for (let i = 0; i < userInfo.roles.length; i++) {
-      if (
-        userInfo.roles[i].role_no === Number(this.props.match.params["role_no"])
-      ) {
-        this.setState({
-          role_name: userInfo.roles[i].role_name,
-          user_code: userInfo.roles[i].code,
-          user_name: userInfo.users[i].user_name,
-          logo: userInfo.roles[i].logo,
-        });
+      if (userInfo.roles[i].role_no === Number(params_role_no)) {
+        setRole_name(userInfo.roles[i].role_name);
+        setUser_code(userInfo.roles[i].code);
+        setUser_name(userInfo.users[i].user_name);
+        setLogo(userInfo.roles[i].logo);
       }
     }
-    setInterval(this.onRefresh, 1000);
-  };
+    setInterval(onRefresh, 1000);
+  }, []);
 
-  componentWillUnmount = (_) => {
-    clearInterval(this.onRefresh);
-  };
+  const onRefresh = (_) => {
+    const storageData = JSON.parse(window.localStorage.getItem("dummyData"));
 
-  //1초 씩 변경 값 적용
-  onRefresh = (_) => {
-    const data = JSON.parse(window.localStorage.getItem("dummyData"));
-
-    if (data !== null && data.length > 0) {
-      this.setState({ dummyData: data });
+    if (storageData !== null && storageData.length > 0) {
+      setItems(storageData);
     }
   };
-  // 로그아웃
-  logOut = (_) => {
-    localStorage.clear();
-    this.props.history.goBack();
-  };
-  render() {
-    const { dummyData } = this.state;
-    return (
-      <div className="frame-user">
-        <div className="header-user">
-          <img
-            src={this.state.logo}
-            style={{ width: 189, height: 70 }}
-            alt={this.state.role_name}
-          ></img>
-          <div className="columnAlign_header">
-            <h5 style={{ fontSize: ".9rem" }}>{this.state.user_name}님</h5>
-            <Button
-              variant="outline-secondary"
-              onClick={this.logOut}
-              style={{ marginLeft: 20, fontSize: ".8rem" }}
-            >
-              로그아웃
-            </Button>
-          </div>
-        </div>
-        <div className="container-user">
-          {dummyData
-            .filter((item) => item.code === this.state.user_code)
-            .map((item, index) =>
-              item.titles.map((title, titleIndex) => (
-                <div
-                  className="card-bottom"
-                  key={`title-${index}-${titleIndex}`}
-                >
-                  <h4 className="card-title">{title.name}</h4>
-                  <p className="card-info">{title.info}</p>
-                  <div className="card-insertDate">
-                    <p>{title.version}</p>
-                    <p>{title.date}</p>
-                  </div>
-                  <div
-                    style={{
-                      width: "100%",
-                      textAlign: "right",
-                      marginLeft: 7.5,
-                    }}
-                  >
-                    <a
-                      download={title.fileName}
-                      href={title.fileUrl}
-                      style={title.fileName ? {} : { display: "none" }}
-                    >
-                      조회
-                    </a>
-                  </div>
-                </div>
-              ))
-            )}
-        </div>
-      </div>
-    );
-  }
-}
+  return (
+    <DataTemplate role_name={role_name} logo={logo} user_name={user_name}>
+      <DataList datas={items} user_code={user_code} />
+    </DataTemplate>
+  );
+};
 
 export default Users;
