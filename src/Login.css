@@ -1,0 +1,96 @@
+@import './index.css';
+.login-container{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  height: 969px;
+  background-image: url(/img/login_bg.jpg);
+}
+.login-content{
+  position: absolute;
+  top: 184.5px;
+  left: 660px;
+  box-sizing: border-box;
+}
+.login-header-container{
+  letter-spacing: 3px;
+  margin-bottom: 0px;
+  text-align: center;
+  font-size: 24px;
+}
+.login-pannel{
+  background-color: #0F2B74;
+  box-shadow: 0px 0px 26px 7px rgba(0,0,0,0.6);
+  border-radius: 12px;
+  height: 307px;
+  width: 550px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+.login-pannel-body{
+  padding: 40px 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+.pannel-body-left{
+  display: inline-block;
+  width: 215px;
+  height: 229px;
+  border-right: 1px solid rgb(11, 29, 77);
+  position: relative;
+  top: -60px;
+  right: 40px;
+}
+.pannel-body-left img{
+  padding-left: 35px;
+  padding-top: 45px;
+  vertical-align: middle;
+  border: 0;
+}
+.pannel-body-right{
+  display: inline-block;
+  margin-left: 30px;
+}
+.login-input{
+  width: 253px;
+    margin-bottom: 10px;
+}
+
+.login-input input{
+  background: url(/img/icon_userid.png) no-repeat 5% 50%;
+  background-size: 24px;
+  text-indent: 35px;
+  background-color: #0B1D4D !important;
+  height: 47px !important;
+  color: #fff !important;
+  border: 1px solid #090a0b !important;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.login-button{
+  width: 253px;
+}
+.login-button input{
+  border: 1px solid #b3bed2;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 18px;
+  float: right;
+  width: 123px;
+  height: 49px;
+  position: relative;
+  vertical-align: middle;
+  background: linear-gradient(to bottom, #91a0c5 11%,#6f82b3 100%);
+}
+input::placeholder {
+  color: #fff;
+}

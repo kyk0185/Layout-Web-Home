@@ -1,10 +1,5 @@
 import { ADD_ITEM } from '../actions';
 import { combineReducers } from 'redux';
-
-//const defaultState = 
-//{
-  //  items: JSON.parse(localStorage.getItem('items')) || []
-//};
   
 function addItem (state = [], action) {
     switch (action.type) {

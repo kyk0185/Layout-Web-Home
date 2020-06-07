@@ -22,8 +22,8 @@ button{
 .header-admin{
     display: flex;
     overflow: auto hidden;
-    border-style: solid;
-    border-color: black;
+    /* border-style: solid;
+    border-color: black; */
     padding-left: 20px;
 }
 .header-admin h2 {
@@ -48,11 +48,12 @@ button{
     display: flex;
     margin-bottom: 9.6px;
     justify-content: center;
+    align-items: center;
 }
 .footer-admin{
-    height: 60px;
+    /* height: 60px;
     border-style: solid;
-    border-color: black;
+    border-color: black; */
     margin-top: auto;
 }
 .contentRight-admin label:hover{
@@ -88,4 +89,12 @@ button{
 .contentRight-admin input {
     float: right;
     margin-top: 8px;
+}
+.editInfoText{
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    text-align: center;
 }

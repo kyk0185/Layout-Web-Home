@@ -1,13 +1,67 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+@font-face {
+  font-family: "SDKukdetopokki-aLt";
+  src: url(./fonts/SDKukdetopokki-aLt.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DWImpactamin";
+  src: url(./fonts/DWImpactamin.ttf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GmarketSansTTF";
+  src: url(./fonts/GmarketSansTTFMedium.ttf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "RIDIBatang";
+  src: url(./fonts/RIDIBatang.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "S-CoreDream";
+  src: url(./fonts/SCDream4.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url(./fonts/NanumSquareR.ttf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+span,
+h1,
+h4 {
+  font-family: "Nanum Square";
+}
+@font-face {
+  font-family: "NanumMyeongjo";
+  src: url(./fonts/NanumMyeongjo.ttf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NanumGothic";
+  src: url(./fonts/NanumGothic.ttf) format("woff");
+  font-weight: normal;
+  font-style: normal;
 }

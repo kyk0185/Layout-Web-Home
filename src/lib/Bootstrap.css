@@ -1,0 +1,15 @@
+.table-bordered td, .table-bordered th {
+  border: transparent; 
+}
+.table thead th {
+  background-color: #333;
+  color: white;
+}
+.table td{
+  padding:.60rem;
+  vertical-align: middle;
+}
+.btn{
+  padding: .2em .30em;
+  line-height: 1;
+}

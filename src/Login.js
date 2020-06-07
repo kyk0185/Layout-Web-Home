@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { userInfo } from './dummy';
-import './Admin.css';
+import './Login.css';
 
 class Login extends Component {
     constructor(props) {
@@ -47,35 +46,45 @@ class Login extends Component {
         return (
             <div>
                 <h3>로그인 페이지</h3>
-                <div className="loginBody">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            id:
-                        <input type="text" value={this.state.id} onChange={this.handleChangeId} />
-                        </label>
-                        <label>
-                            password:
-                        <input type="text" value={this.state.password} onChange={this.handleChangePwd} />
-                        </label>
-                        <input type="submit" value="로그인" />
-                    </form>
+                <div className="login-container">
+                    <div className="login-content">
+                        <h3 className="login-header-container">
+                            <span style={{ color: "rgb(20, 166, 233)" }}>재해복구</span>
+                            <span style={{ color: "rgb(206, 151, 37)" }}>문서관리솔루션</span>
+                        </h3>
+                        <h1 className="login-header-container" style={{ color: "rgb(255, 255, 255)", fontWeight: "bold", fontSize: 64 }}>BCPMS</h1>
+                        <div className="login-pannel">
+                            <div className="login-pannel-body">
+                                <div className="pannel-body-left">
+                                    <img src="/img/standard_logo.png"></img>
+                                </div>
+                                <div className="pannel-body-right">
+                                    <div style={{ width: 253, marginBottom: 20 }}>
+                                        <div style={{ height: 45 }}>&nbsp;</div>
+                                        <form onSubmit={this.handleSubmit}>
+                                            <div className="login-input">
+                                                <input type="text" value={this.state.id} onChange={this.handleChangeId} placeholder="User ID" maxlength="50" />
+                                            </div>
+                                            <div className="login-input" style={{ display: "inline-block" }}>
+                                                <input type="password" value={this.state.password} onChange={this.handleChangePwd} placeholder="User Password" style={{ background: "url(/img/icon_pass.png) no-repeat 5% 50%" }} />
+                                            </div>
+                                            <div className="login-button">
+                                                <input type="submit" value="Login" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
     }
 
 }
-const mapStateToProps = (state) => {
-    return {
-        delData: state
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updtDelData: (delData) => dispatch({ type: 'SELECT_YN', delData: delData })
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+export default Login;
 
 
 
