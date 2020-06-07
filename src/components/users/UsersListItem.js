@@ -1,7 +1,7 @@
 import React from "react";
-import "./DataListItem.scss";
+import "./UsersListItem.scss";
 
-const DataListItem = ({ title }) => {
+const UsersListItem = ({ title }) => {
   return (
     <div className="card-bottom" key={`title-${title.key}`}>
       <h4>{title.name}</h4>
@@ -29,4 +29,4 @@ const DataListItem = ({ title }) => {
   );
 };
 
-export default DataListItem;
+export default UsersListItem;

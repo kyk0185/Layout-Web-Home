@@ -1,18 +1,18 @@
 import React from "react";
-import DataListItem from "./DataListItem";
+import UsersListItem from "./UsersListItem";
 
-const DataList = ({ datas, user_code }) => {
+const UsersList = ({ datas, user_code }) => {
   return (
     <>
       {datas
         .filter((item) => item.code === user_code)
         .map((item, index) =>
           item.titles.map((title, titleIndex) => (
-            <DataListItem title={title} key={titleIndex} />
+            <UsersListItem title={title} key={titleIndex} />
           ))
         )}
     </>
   );
 };
 
-export default DataList;
+export default UsersList;

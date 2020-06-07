@@ -1,9 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "./DataTemplate.scss";
+import "./UsersTemplate.scss";
 import { Button } from "react-bootstrap";
 
-const DataTemplate = ({ role_name, logo, user_name, children, history }) => {
+const UsersTemplate = ({ role_name, logo, user_name, children, history }) => {
   const logOut = (_) => {
     localStorage.clear();
     history.push("/");
@@ -32,4 +32,4 @@ const DataTemplate = ({ role_name, logo, user_name, children, history }) => {
   );
 };
 
-export default withRouter(DataTemplate);
+export default withRouter(UsersTemplate);

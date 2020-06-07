@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { userInfo, data } from "../../dummy";
-import DataTemplate from "./DataTemplate";
-import DataList from "./DataList";
+import UsersTemplate from "./UsersTemplate";
+import UsersList from "./UsersList";
 
 const Users = ({ match }) => {
   const params_role_no = match.params["role_no"];
@@ -31,9 +31,9 @@ const Users = ({ match }) => {
     }
   };
   return (
-    <DataTemplate role_name={role_name} logo={logo} user_name={user_name}>
-      <DataList datas={items} user_code={user_code} />
-    </DataTemplate>
+    <UsersTemplate role_name={role_name} logo={logo} user_name={user_name}>
+      <UsersList datas={items} user_code={user_code} />
+    </UsersTemplate>
   );
 };
 

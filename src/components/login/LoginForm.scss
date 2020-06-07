@@ -1,0 +1,36 @@
+.login-input {
+  width: 253px;
+  margin-bottom: 10px;
+  input {
+    background: url(/img/icon_userid.png) no-repeat 5% 50%;
+    background-size: 24px;
+    text-indent: 35px;
+    background-color: #0b1d4d !important;
+    height: 47px !important;
+    color: #fff !important;
+    border: 1px solid #090a0b !important;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+}
+.login-button {
+  width: 253px;
+  input {
+    border: 1px solid #b3bed2;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 18px;
+    float: right;
+    width: 123px;
+    height: 49px;
+    position: relative;
+    vertical-align: middle;
+    background: linear-gradient(to bottom, #91a0c5 11%, #6f82b3 100%);
+    &::placeholder {
+      color: #fff;
+    }
+  }
+}

@@ -8,7 +8,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Users from "./components/users/Users";
 import Admin from "./Admin";
-import Login from "./Login";
+import Login from "./components/login/Login";
 import * as serviceWorker from "./serviceWorker";
 
 const store = createStore(rootReducers);
